@@ -1,43 +1,43 @@
 {
   "site": {
-    "name": "GameHub 在线小游戏",
+    "name": "GameHub",
     "name_en": "GameHub",
     "domain": "https://manking2024.github.io/game-hub",
-    "description": "免费在线玩精选 HTML5 小游戏，无需下载，打开即玩。持续收录解谜、益智、io 对战与怀旧经典游戏。",
-    "keywords": "在线小游戏,免费小游戏,HTML5游戏,online games,free games"
+    "description": "Play free online HTML5 games instantly — no downloads, no sign-ups. Fresh puzzles, brain teasers, IO battles and retro classics added regularly.",
+    "keywords": "free online games, play free games, HTML5 games, online puzzle games, retro games, browser games"
   },
   "games": [
     {
       "slug": "block-puzzle-101",
-      "title": "方块拼图 101",
+      "title": "Block Puzzle 101",
       "title_en": "Block Puzzle 101",
       "category": "puzzle",
       "embed_url": "https://example.com/your-game-embed-url-1",
-      "keywords": ["block puzzle online", "方块拼图在线玩", "免费益智游戏"],
-      "summary": "方块拼图 101 是一款无需下载的 HTML5 益智游戏：把随机方块拖入 10x10 棋盘填满行列即可消除，单局 3-5 分钟，适合通勤和碎片时间。",
-      "description": "方块拼图 101 在线免费玩：经典 10x10 棋盘消除玩法，无需注册下载，手机电脑都能玩。",
+      "keywords": ["block puzzle online", "free puzzle game", "brain teaser game"],
+      "summary": "Block Puzzle 101 is a free HTML5 brain teaser: drag blocks onto a 10x10 board and fill full rows or columns to clear them. Rounds last 3–5 minutes — perfect for commutes and short breaks.",
+      "description": "Play Block Puzzle 101 free online — the classic 10x10 block-clearing game. No downloads, no sign-ups; works on mobile and desktop.",
       "sections": [
         {
-          "h2": "这款游戏怎么玩？",
-          "body": "游戏会逐个给出随机形状的方块，你需要把它们拖放到 10x10 的棋盘内。当一行或一列被填满，该行/列就会消除并得分。棋盘放不下新方块时游戏结束。核心策略是保留空间给长条形方块，不要急着填满角落。"
+          "h2": "How do you play Block Puzzle 101?",
+          "body": "The game hands you blocks in random shapes, one at a time. Drag each one onto the 10x10 board; whenever a row or column is completely filled, it clears and scores points. The game ends when the board has no room for the next block. The core strategy is to keep space open for long I-shaped blocks — resist the urge to fill every corner too early."
         },
         {
-          "h2": "为什么推荐在网页上玩？",
-          "body": "网页版无需下载安装、不占手机内存，关掉页面进度也不会丢失（本局内）。相比 App 版，网页版在电脑上操作更精准，适合大屏玩家。"
+          "h2": "Why play it in your browser?",
+          "body": "The web version needs no installation and takes up zero phone storage. On desktop it plays precisely with a mouse or trackpad, and on mobile you drag with your finger. Nothing to update, nothing to sign up for — just open the page and start a round."
         }
       ],
       "faq": [
         {
-          "q": "方块拼图 101 免费吗？",
-          "a": "免费。游戏内由广告支持，无需付费即可完整游玩。"
+          "q": "Is Block Puzzle 101 free?",
+          "a": "Yes — completely free. The game is supported by ads, so you can play the full experience without paying a cent."
         },
         {
-          "q": "手机能玩吗？",
-          "a": "可以。页面自适应手机屏幕，触屏拖拽即可操作。"
+          "q": "Can I play it on my phone?",
+          "a": "Absolutely. The page adapts to any screen size, and you move the blocks with simple touch drags."
         },
         {
-          "q": "游戏会记录分数吗？",
-          "a": "单局内会记录当前分数，刷新页面后重新开始，不涉及账号系统。"
+          "q": "Does the game save my score?",
+          "a": "Your current score is kept for the round you're playing. Refreshing the page starts a new round — there's no account system to worry about."
         }
       ],
       "related": [],
@@ -45,31 +45,31 @@
     },
     {
       "slug": "retro-snake-classic",
-      "title": "怀旧贪吃蛇",
+      "title": "Retro Snake Classic",
       "title_en": "Retro Snake Classic",
       "category": "classic",
       "embed_url": "https://example.com/your-game-embed-url-2",
-      "keywords": ["snake game online", "贪吃蛇在线玩", "怀旧小游戏"],
-      "summary": "怀旧贪吃蛇复刻经典街机玩法：方向键控制贪吃蛇吃食物变长，撞墙或咬到自己则结束。一秒上手，越玩越上头。",
-      "description": "经典贪吃蛇在线免费玩，还原街机手感，支持键盘与触屏，打开即玩无需下载。",
+      "keywords": ["snake game online", "retro snake", "classic arcade game"],
+      "summary": "Retro Snake Classic brings back the arcade favorite: steer your snake, eat the food, grow longer — hit a wall or yourself and it's game over. One second to learn, hard to put down.",
+      "description": "Play classic snake online free — authentic arcade feel with keyboard and touch controls. No download, just open and play.",
       "sections": [
         {
-          "h2": "经典玩法有哪些新变化？",
-          "body": "除了原汁原味的经典模式，本版本加入了速度随长度提升的设定，后期节奏明显加快。想挑战高分，需要在早期刻意留出活动空间，避免蛇身把自己困死。"
+          "h2": "What's new in this classic?",
+          "body": "Beyond the original mode, speed now ramps up as your snake grows, so late-game pacing gets noticeably faster. To chase a high score, deliberately leave room to maneuver early on — don't let your own tail trap you against the wall."
         },
         {
-          "h2": "键盘和触屏分别怎么操作？",
-          "body": "电脑端用方向键或 WASD 控制方向；手机端在屏幕上滑动即可。两种操作方式延迟都很低，适合快速转向。"
+          "h2": "How do keyboard and touch controls work?",
+          "body": "On desktop, use the arrow keys or WASD to steer. On mobile, swipe on the screen in the direction you want to go. Both control schemes respond instantly, so sharp turns are never a problem."
         }
       ],
       "faq": [
         {
-          "q": "贪吃蛇最高能得多少分？",
-          "a": "没有固定上限，分数取决于蛇的长度和存活时间；速度提升后容错率下降，多数玩家在 200-500 分之间结束。"
+          "q": "What's the highest possible score in Snake?",
+          "a": "There's no fixed cap — it depends on how long you survive and how long your snake gets. Once the speed climbs, margin for error shrinks; most players finish somewhere between 200 and 500 points."
         },
         {
-          "q": "加载慢怎么办？",
-          "a": "本游戏为轻量 HTML5 实现，正常网络下 1-2 秒即可加载；如长时间未加载可尝试刷新页面。"
+          "q": "What if the game loads slowly?",
+          "a": "It's a lightweight HTML5 build — normally 1–2 seconds on a decent connection. If it ever seems stuck, just refresh the page and it will reload."
         }
       ],
       "related": [],

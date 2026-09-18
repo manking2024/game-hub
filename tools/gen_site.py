@@ -1,21 +1,21 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-gen_site.py — 从 data/games.json 生成游戏站静态页面（零第三方依赖）。
+gen_site.py — Generate the GameHub static site from data/games.json (zero third-party deps).
 
-用法:
+Usage:
     python tools/gen_site.py
 
-输出（生成到仓库根目录，即 GitHub Pages 发布根）:
-    index.html         首页：分类导航 + 游戏卡片
-    games/<slug>.html  每款游戏一个页面（Article + FAQPage Schema / iframe / 原创内容 / 相关游戏内链）
-    sitemap.xml        全站 URL 清单（提交给 Search Console 用）
-    robots.txt         允许全站抓取
+Output (written to repo root, which is the GitHub Pages publish root):
+    index.html         Home: hero + category sections + game cards
+    games/<slug>.html  One page per game (Article + FAQPage schema / iframe / original content / related games)
+    sitemap.xml        All URLs (for Google Search Console)
+    robots.txt         Allow all + sitemap pointer
 
-工作流:
-    1. 用 geo-content-optimizer 技能产出内容 → 填入 data/games.json
-    2. 运行本脚本 → 生成全部页面
-    3. git push → GitHub Pages 自动发布
+Workflow:
+    1. Produce content with the geo-content-optimizer skill -> fill data/games.json
+    2. Run this script -> regenerate every page
+    3. git push -> GitHub Pages auto-publishes
 """
 import datetime
 import html
@@ -29,7 +29,7 @@ DATA = os.path.join(ROOT, "data", "games.json")
 
 
 def esc(value):
-    """HTML 转义，防止标题/正文中的引号与尖括号破坏页面。"""
+    """HTML-escape titles/bodies so quotes and angle brackets never break the page."""
     return html.escape(str(value), quote=True)
 
 
@@ -39,7 +39,7 @@ def load():
 
 
 def slugify(title_en):
-    """由英文标题生成 URL slug；失败时退化为拼音不可用时的时间戳。"""
+    """Turn an English title into a URL slug."""
     s = re.sub(r"[^a-z0-9]+", "-", title_en.lower()).strip("-")
     return s or "game"
 
@@ -52,12 +52,12 @@ def schema_article(game, site):
     return {
         "@context": "https://schema.org",
         "@type": "Article",
-        "headline": f"{game['title']} 在线玩",
+        "headline": f"{game['title']} — Play Online Free",
         "description": game.get("description", game.get("summary", "")),
         "url": url,
         "datePublished": date,
         "dateModified": date,
-        "inLanguage": "zh-CN",
+        "inLanguage": "en-US",
     }
 
 
@@ -76,18 +76,17 @@ def schema_faq(game):
     }
 
 
-# ---------- 页面渲染 ----------
+# ---------- Page rendering ----------
 
 def related_games(game, all_games, n=3):
-    """优先同分类，再补其他；排除自身。"""
+    """Prefer same category, then fill with others; never include self."""
     same = [g for g in all_games if g["category"] == game["category"] and g["slug"] != game["slug"]]
     others = [g for g in all_games if g["category"] != game["category"] and g["slug"] != game["slug"]]
-    picked = (same + others)[:n]
-    return picked
+    return (same + others)[:n]
 
 
 def render_game_page(game, site, all_games):
-    title = f"{game['title']} 在线玩 - 免费"
+    title = f"{game['title']} — Play Online Free"
     canon = f"{site['domain']}/games/{game['slug']}.html"
     blocks = [schema_article(game, site)]
     faq_schema = schema_faq(game)
@@ -99,18 +98,20 @@ def render_game_page(game, site, all_games):
     )
 
     sections = "\n".join(
-        f"<h2>{esc(s['h2'])}</h2>\n<p>{esc(s['body'])}</p>"
+        f"<section class=\"content-block\">\n<h2>{esc(s['h2'])}</h2>\n<p>{esc(s['body'])}</p>\n</section>"
         for s in game.get("sections", [])
     )
 
     faq_html = ""
     if game.get("faq"):
+        items = "\n".join(
+            f"<li class=\"faq-item\"><h3>{esc(f['q'])}</h3><p>{esc(f['a'])}</p></li>"
+            for f in game["faq"]
+        )
         faq_html = (
-            '<h2>常见问题</h2>\n'
-            + "\n".join(
-                f"<h3>{esc(f['q'])}</h3>\n<p>{esc(f['a'])}</p>"
-                for f in game["faq"]
-            )
+            "<section class=\"content-block\">\n"
+            "<h2>Frequently Asked Questions</h2>\n"
+            f"<ul class=\"faq-list\">{items}</ul>\n</section>"
         )
 
     rel = related_games(game, all_games)
@@ -118,14 +119,20 @@ def render_game_page(game, site, all_games):
     if rel:
         cards = "\n".join(
             f'<a class="card" href="games/{g["slug"]}.html">'
-            f'<span class="tag">{esc(g["category"])}</span>'
-            f'<strong>{esc(g["title"])}</strong></a>'
+            f'<span class="card-tag tag-{esc(g["category"])}">{esc(g["category"])}</span>'
+            f'<strong>{esc(g["title"])}</strong>'
+            f'<em>{esc(g.get("summary", ""))[:90]}</em>'
+            f'<span class="card-arrow">Play now →</span></a>'
             for g in rel
         )
-        rel_html = f"<h2>相关游戏</h2>\n<div class=\"card-grid\">{cards}</div>"
+        rel_html = (
+            "<section class=\"related\">\n"
+            "<h2>More Games You'll Love</h2>\n"
+            f"<div class=\"card-grid\">{cards}</div>\n</section>"
+        )
 
     return f"""<!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -138,20 +145,23 @@ def render_game_page(game, site, all_games):
 </head>
 <body>
 <header class="site-header">
-  <a class="brand" href="../index.html">{esc(site['name'])}</a>
-  <span class="slogan">{esc(site['description'])}</span>
+  <a class="brand" href="../index.html"><span class="logo">G</span>GameHub</a>
+  <a class="header-link" href="../index.html">← All Games</a>
 </header>
 <main class="wrap">
   <article class="game-page">
-    <h1>{esc(game['title'])} 在线玩</h1>
+    <nav class="crumbs"><a href="../index.html">Home</a><span class="sep">/</span><span>{esc(game['category'])}</span></nav>
+    <h1>Play {esc(game['title'])} Online</h1>
     <p class="lead">{esc(game.get('summary', ''))}</p>
 
-    <div class="game-frame">
-      <iframe src="{esc(game['embed_url'])}"
-              title="{esc(game['title'])} 在线游戏"
-              loading="lazy" allowfullscreen></iframe>
+    <div class="game-card">
+      <div class="game-frame">
+        <iframe src="{esc(game['embed_url'])}"
+                title="{esc(game['title'])} — play online"
+                loading="lazy" allowfullscreen></iframe>
+      </div>
     </div>
-    <p class="tip">提示：游戏由第三方平台提供，加载失败可刷新重试。</p>
+    <p class="tip">Game provided by a third-party platform. If it fails to load, refresh the page.</p>
 
     <div class="content">
 {sections}
@@ -160,7 +170,9 @@ def render_game_page(game, site, all_games):
   </article>
 {rel_html}
 </main>
-<footer class="site-footer">© {datetime.date.today().year} {esc(site['name'])} · 仅供娱乐 · 游戏版权归原平台所有</footer>
+<footer class="site-footer">
+  <p>© {datetime.date.today().year} {esc(site['name'])} · Free online games for fun · Game content © their respective platforms</p>
+</footer>
 </body>
 </html>
 """
@@ -171,31 +183,33 @@ def render_index(site, all_games):
     for g in all_games:
         categories.setdefault(g["category"], []).append(g)
 
-    nav = "".join(
-        f'<a href="#cat-{esc(cat)}">{esc(cat)}</a>'
-        for cat in categories
+    hero_pills = "".join(
+        f'<a class="pill" href="#cat-{esc(cat)}">{esc(cat)}<span class="pill-count">{len(games)}</span></a>'
+        for cat, games in categories.items()
     )
 
     blocks = []
     for cat, games in categories.items():
         cards = "\n".join(
             f'<a class="card" href="games/{esc(g["slug"])}.html">'
-            f'<span class="tag">{esc(g["category"])}</span>'
+            f'<span class="card-tag tag-{esc(g["category"])}">{esc(g["category"])}</span>'
             f'<strong>{esc(g["title"])}</strong>'
-            f'<em>{esc(g.get("summary", ""))[:60]}…</em></a>'
+            f'<em>{esc(g.get("summary", ""))[:100]}</em>'
+            f'<span class="card-arrow">Play now →</span></a>'
             for g in games
         )
         blocks.append(
-            f'<h2 id="cat-{esc(cat)}">{esc(cat)}（{len(games)} 款）</h2>'
-            f'<div class="card-grid">{cards}</div>'
+            f'<section class="cat-section" id="cat-{esc(cat)}">\n'
+            f'<div class="section-head"><h2>{esc(cat.capitalize())} Games</h2><span class="count">{len(games)}</span></div>\n'
+            f'<div class="card-grid">{cards}</div>\n</section>'
         )
 
     return f"""<!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>{esc(site['name'])} - 免费在线小游戏</title>
+<title>{esc(site['name'])} — Free Online Games, Play Instantly</title>
 <meta name="description" content="{esc(site['description'])}">
 <meta name="keywords" content="{esc(site['keywords'])}">
 <link rel="canonical" href="{esc(site['domain'])}/">
@@ -203,15 +217,20 @@ def render_index(site, all_games):
 </head>
 <body>
 <header class="site-header">
-  <span class="brand">{esc(site['name'])}</span>
-  <span class="slogan">{esc(site['description'])}</span>
+  <span class="brand"><span class="logo">G</span>{esc(site['name'])}</span>
 </header>
+<section class="hero">
+  <h1>Play Free Online Games Instantly</h1>
+  <p class="hero-sub">{esc(site['description'])}</p>
+  <div class="hero-pills">{hero_pills}</div>
+</section>
 <main class="wrap">
-  <nav class="cat-nav">{nav}</nav>
-  <p class="lead">共收录 {len(all_games)} 款游戏，持续更新中。</p>
+  <p class="lead">{len(all_games)} games and counting — new titles added regularly.</p>
 {''.join(blocks)}
 </main>
-<footer class="site-footer">© {datetime.date.today().year} {esc(site['name'])} · 仅供娱乐 · 游戏版权归原平台所有</footer>
+<footer class="site-footer">
+  <p>© {datetime.date.today().year} {esc(site['name'])} · Free online games for fun · Game content © their respective platforms</p>
+</footer>
 </body>
 </html>
 """
@@ -263,7 +282,7 @@ def main():
         f.write("User-agent: *\nAllow: /\n\nSitemap: " + site["domain"] + "/sitemap.xml\n")
     print(f"[gen] {os.path.join(ROOT, 'robots.txt')}")
 
-    print(f"[gen] 完成：{len(games)} 款游戏，共生成 {len(games) + 3} 个文件")
+    print(f"[gen] Done: {len(games)} games, {len(games) + 3} files generated")
 
 
 if __name__ == "__main__":

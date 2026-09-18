@@ -1,63 +1,185 @@
-/* GameHub 在线小游戏 - 极简响应式样式 */
+/* ============================================================
+   GameHub — modern, clean, US-style arcade site
+   Palette: brand blue #2563eb, warm accents, soft shadows
+   ============================================================ */
+
 * { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
 body {
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Microsoft YaHei", sans-serif;
-  background: #f6f7f9; color: #2b2f36; line-height: 1.7;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+               "Helvetica Neue", Arial, sans-serif;
+  background: #f4f6fb;
+  color: #1f2430;
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
 }
-a { color: #1565c0; text-decoration: none; }
-a:hover { text-decoration: underline; }
 
+a { color: #2563eb; text-decoration: none; }
+a:hover { text-decoration: none; }
+
+/* ---------- Header ---------- */
 .site-header {
-  background: #1f3b2c; color: #fff; padding: 14px 20px;
-  display: flex; align-items: baseline; gap: 14px; flex-wrap: wrap;
+  position: sticky; top: 0; z-index: 50;
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid #e8ebf2;
+  padding: 12px 24px;
+  display: flex; align-items: center; justify-content: space-between;
 }
-.brand { font-size: 20px; font-weight: 700; color: #fff; }
-.site-header .slogan { font-size: 13px; opacity: .8; }
-
-.wrap { max-width: 1000px; margin: 0 auto; padding: 20px 16px 40px; }
-.lead { font-size: 15px; margin: 12px 0; }
-
-.cat-nav { display: flex; flex-wrap: wrap; gap: 10px; margin: 16px 0; }
-.cat-nav a {
-  background: #e8f5e9; color: #1b5e20; padding: 4px 12px; border-radius: 999px; font-size: 14px;
+.brand {
+  display: flex; align-items: center; gap: 10px;
+  font-size: 20px; font-weight: 800; color: #1f2430; letter-spacing: -0.3px;
 }
-.cat-nav a:hover { background: #c8e6c9; text-decoration: none; }
+.logo {
+  width: 34px; height: 34px; border-radius: 10px;
+  background: linear-gradient(135deg, #2563eb, #38bdf8);
+  color: #fff; font-size: 19px; font-weight: 800;
+  display: inline-flex; align-items: center; justify-content: center;
+  box-shadow: 0 4px 10px rgba(37, 99, 235, 0.28);
+}
+.header-link { font-size: 14px; font-weight: 600; color: #2563eb; }
+.header-link:hover { text-decoration: underline; }
 
-h1 { font-size: 26px; margin: 14px 0 8px; }
-h2 { font-size: 20px; margin: 28px 0 10px; }
-h3 { font-size: 16px; margin: 18px 0 6px; }
-p { margin: 8px 0; }
+/* ---------- Hero (home) ---------- */
+.hero {
+  background:
+    radial-gradient(1000px 320px at 15% -40%, rgba(56, 189, 248, 0.28), transparent 60%),
+    radial-gradient(900px 300px at 90% -30%, rgba(129, 140, 248, 0.22), transparent 60%),
+    linear-gradient(180deg, #ffffff, #f4f6fb);
+  text-align: center;
+  padding: 64px 24px 44px;
+}
+.hero h1 {
+  font-size: clamp(30px, 5vw, 46px);
+  font-weight: 800; letter-spacing: -1px; color: #131720;
+  margin-bottom: 14px;
+}
+.hero-sub {
+  max-width: 640px; margin: 0 auto 26px;
+  font-size: 16px; color: #4b5563;
+}
+.hero-pills { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; }
+.pill {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: #fff; color: #1f2430;
+  border: 1px solid #dfe4ee; border-radius: 999px;
+  padding: 8px 16px; font-size: 14px; font-weight: 600;
+  box-shadow: 0 2px 6px rgba(15, 23, 42, 0.05);
+  transition: transform .15s ease, box-shadow .15s ease, border-color .15s ease;
+}
+.pill:hover { transform: translateY(-2px); box-shadow: 0 6px 14px rgba(37, 99, 235, 0.16); border-color: #2563eb; }
+.pill-count {
+  background: #eef2ff; color: #2563eb; font-size: 12px; font-weight: 700;
+  border-radius: 999px; padding: 1px 8px;
+}
 
-.card-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 12px; }
+/* ---------- Layout ---------- */
+.wrap { max-width: 1080px; margin: 0 auto; padding: 20px 20px 56px; }
+.lead { font-size: 15px; color: #4b5563; margin: 18px 0 6px; }
+
+.cat-section { margin-top: 34px; scroll-margin-top: 76px; }
+.section-head {
+  display: flex; align-items: baseline; gap: 10px;
+  margin-bottom: 14px;
+}
+.section-head h2 { font-size: 22px; font-weight: 800; letter-spacing: -0.4px; }
+.section-head .count {
+  background: #e8ebf3; color: #4b5563; font-size: 12px; font-weight: 700;
+  border-radius: 999px; padding: 2px 10px;
+}
+
+/* ---------- Cards ---------- */
+.card-grid {
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 16px;
+}
 .card {
-  background: #fff; border-radius: 10px; padding: 14px; border: 1px solid #e3e8ee;
-  display: flex; flex-direction: column; gap: 6px; transition: box-shadow .15s;
+  background: #fff; border-radius: 16px; padding: 18px;
+  border: 1px solid #e8ebf2;
+  display: flex; flex-direction: column; gap: 8px;
+  box-shadow: 0 2px 8px rgba(15, 23, 42, 0.05);
+  transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease;
 }
-.card:hover { box-shadow: 0 4px 14px rgba(0,0,0,.08); text-decoration: none; }
-.card strong { font-size: 16px; color: #2b2f36; }
-.card em { font-size: 13px; color: #68707a; font-style: normal; }
-.tag {
-  align-self: flex-start; background: #eef2f5; color: #37474f;
-  font-size: 12px; padding: 1px 8px; border-radius: 999px;
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 14px 28px rgba(15, 23, 42, 0.12);
+  border-color: #bcd0fb;
 }
+.card-tag {
+  align-self: flex-start;
+  font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.6px;
+  border-radius: 999px; padding: 3px 10px;
+}
+.tag-puzzle { background: #fff1e6; color: #c2410c; }
+.tag-classic { background: #e0f7fa; color: #0e7490; }
+.card strong { font-size: 17px; color: #1f2430; letter-spacing: -0.2px; }
+.card em { font-size: 13px; color: #68707e; font-style: normal; }
+.card-arrow { font-size: 13px; font-weight: 700; color: #2563eb; margin-top: 4px; }
 
+/* ---------- Game page ---------- */
+.crumbs {
+  display: flex; align-items: center; gap: 8px;
+  font-size: 13px; color: #8a93a3; margin: 8px 0 6px;
+}
+.crumbs a { color: #2563eb; font-weight: 600; }
+.crumbs .sep { color: #c3cad6; }
+
+.game-page h1 {
+  font-size: clamp(26px, 4vw, 36px);
+  font-weight: 800; letter-spacing: -0.8px;
+  margin: 10px 0 8px;
+}
+.game-page .lead { font-size: 16px; color: #4b5563; margin-bottom: 22px; }
+
+.game-card {
+  background: #fff; border-radius: 20px; padding: 12px;
+  border: 1px solid #e8ebf2;
+  box-shadow: 0 8px 24px rgba(15, 23, 42, 0.08);
+}
 .game-frame {
   position: relative; width: 100%; padding-top: 56.25%; /* 16:9 */
-  background: #0d1117; border-radius: 10px; overflow: hidden; margin: 14px 0;
+  background: #0d1117; border-radius: 14px; overflow: hidden;
 }
 .game-frame iframe {
   position: absolute; inset: 0; width: 100%; height: 100%; border: 0;
 }
-.tip { font-size: 12px; color: #8a8f98; }
+.tip { font-size: 12.5px; color: #8a93a3; margin: 10px 2px 0; }
 
-.content { background: #fff; border-radius: 10px; padding: 18px; margin-top: 18px; }
-.content h2 { margin-top: 10px; }
-
-.site-footer {
-  text-align: center; color: #8a8f98; font-size: 12px; padding: 20px 16px;
+.content { margin-top: 26px; }
+.content-block {
+  background: #fff; border-radius: 16px; padding: 22px 24px;
+  border: 1px solid #e8ebf2;
+  box-shadow: 0 2px 8px rgba(15, 23, 42, 0.04);
+  margin-bottom: 16px;
 }
+.content-block h2 { font-size: 20px; font-weight: 800; letter-spacing: -0.3px; margin-bottom: 10px; }
+.content-block p { font-size: 15px; color: #374151; }
 
-@media (max-width: 600px) {
-  .game-frame { padding-top: 100%; } /* 手机上更接近方形画布 */
-  h1 { font-size: 22px; }
+.faq-list { list-style: none; margin-top: 6px; }
+.faq-item { padding: 12px 0; border-top: 1px solid #eef1f6; }
+.faq-item:first-child { border-top: 0; }
+.faq-item h3 { font-size: 15.5px; font-weight: 700; margin-bottom: 4px; color: #1f2430; }
+.faq-item p { font-size: 14.5px; color: #4b5563; }
+
+.related { margin-top: 30px; }
+.related h2 { font-size: 20px; font-weight: 800; margin-bottom: 14px; }
+
+/* ---------- Footer ---------- */
+.site-footer {
+  border-top: 1px solid #e8ebf2;
+  background: #fff;
+  text-align: center;
+  padding: 22px 16px 26px;
+}
+.site-footer p { font-size: 12.5px; color: #8a93a3; }
+
+/* ---------- Responsive ---------- */
+@media (max-width: 640px) {
+  .hero { padding: 44px 18px 32px; }
+  .wrap { padding: 14px 14px 44px; }
+  .card-grid { grid-template-columns: 1fr; }
+  .game-frame { padding-top: 100%; } /* closer to square on phones */
+  .content-block { padding: 18px; }
 }
