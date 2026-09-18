@@ -55,6 +55,19 @@ game-hub/
 - **游戏合规**：只嵌平台授权分发的游戏，不自行嵌入来源不明的内容
 - **广告合规**：游戏内广告由平台控制；不要在页面上额外堆违规广告
 
+## 账号管理（游戏站 manking2024 / 导航站 chuangyeli）
+
+本机 gh 已登录两个账号，push 身份跟随当前 active 账号：
+
+```powershell
+gh auth status                          # 查看所有账号与当前 active
+gh auth switch --user manking2024       # 更新游戏站前切到游戏站账号
+gh auth switch --user chuangyeli        # 更新导航站前切回导航站账号
+```
+
+注意：git 代理已配置为系统代理 `127.0.0.1:7890`；若代理端口变化需同步修改
+`git config --global http.proxy` / `https.proxy`。
+
 ## 与 geo-content-optimizer 技能配合
 
 游戏页就是内容页，每款游戏按 GEO 四步走：
