@@ -1,0 +1,63 @@
+/* GameHub 在线小游戏 - 极简响应式样式 */
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Microsoft YaHei", sans-serif;
+  background: #f6f7f9; color: #2b2f36; line-height: 1.7;
+}
+a { color: #1565c0; text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+.site-header {
+  background: #1f3b2c; color: #fff; padding: 14px 20px;
+  display: flex; align-items: baseline; gap: 14px; flex-wrap: wrap;
+}
+.brand { font-size: 20px; font-weight: 700; color: #fff; }
+.site-header .slogan { font-size: 13px; opacity: .8; }
+
+.wrap { max-width: 1000px; margin: 0 auto; padding: 20px 16px 40px; }
+.lead { font-size: 15px; margin: 12px 0; }
+
+.cat-nav { display: flex; flex-wrap: wrap; gap: 10px; margin: 16px 0; }
+.cat-nav a {
+  background: #e8f5e9; color: #1b5e20; padding: 4px 12px; border-radius: 999px; font-size: 14px;
+}
+.cat-nav a:hover { background: #c8e6c9; text-decoration: none; }
+
+h1 { font-size: 26px; margin: 14px 0 8px; }
+h2 { font-size: 20px; margin: 28px 0 10px; }
+h3 { font-size: 16px; margin: 18px 0 6px; }
+p { margin: 8px 0; }
+
+.card-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 12px; }
+.card {
+  background: #fff; border-radius: 10px; padding: 14px; border: 1px solid #e3e8ee;
+  display: flex; flex-direction: column; gap: 6px; transition: box-shadow .15s;
+}
+.card:hover { box-shadow: 0 4px 14px rgba(0,0,0,.08); text-decoration: none; }
+.card strong { font-size: 16px; color: #2b2f36; }
+.card em { font-size: 13px; color: #68707a; font-style: normal; }
+.tag {
+  align-self: flex-start; background: #eef2f5; color: #37474f;
+  font-size: 12px; padding: 1px 8px; border-radius: 999px;
+}
+
+.game-frame {
+  position: relative; width: 100%; padding-top: 56.25%; /* 16:9 */
+  background: #0d1117; border-radius: 10px; overflow: hidden; margin: 14px 0;
+}
+.game-frame iframe {
+  position: absolute; inset: 0; width: 100%; height: 100%; border: 0;
+}
+.tip { font-size: 12px; color: #8a8f98; }
+
+.content { background: #fff; border-radius: 10px; padding: 18px; margin-top: 18px; }
+.content h2 { margin-top: 10px; }
+
+.site-footer {
+  text-align: center; color: #8a8f98; font-size: 12px; padding: 20px 16px;
+}
+
+@media (max-width: 600px) {
+  .game-frame { padding-top: 100%; } /* 手机上更接近方形画布 */
+  h1 { font-size: 22px; }
+}

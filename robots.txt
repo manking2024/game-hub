@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://manking2024.github.io/game-hub/sitemap.xml
