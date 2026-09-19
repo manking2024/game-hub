@@ -119,10 +119,13 @@ def render_game_page(game, site, all_games):
     if rel:
         cards = "\n".join(
             f'<a class="card" href="games/{g["slug"]}.html">'
+            + (f'<img class="card-thumb" src="{esc(g["thumbnail"])}" alt="{esc(g["title"])}" loading="lazy">'
+               if g.get("thumbnail") else "")
+            + f'<div class="card-body">'
             f'<span class="card-tag tag-{esc(g["category"])}">{esc(g["category"])}</span>'
             f'<strong>{esc(g["title"])}</strong>'
             f'<em>{esc(g.get("summary", ""))[:90]}</em>'
-            f'<span class="card-arrow">Play now →</span></a>'
+            f'<span class="card-arrow">Play now →</span></div></a>'
             for g in rel
         )
         rel_html = (
@@ -192,10 +195,13 @@ def render_index(site, all_games):
     for cat, games in categories.items():
         cards = "\n".join(
             f'<a class="card" href="games/{esc(g["slug"])}.html">'
+            + (f'<img class="card-thumb" src="{esc(g["thumbnail"])}" alt="{esc(g["title"])}" loading="lazy">'
+               if g.get("thumbnail") else "")
+            + f'<div class="card-body">'
             f'<span class="card-tag tag-{esc(g["category"])}">{esc(g["category"])}</span>'
             f'<strong>{esc(g["title"])}</strong>'
             f'<em>{esc(g.get("summary", ""))[:100]}</em>'
-            f'<span class="card-arrow">Play now →</span></a>'
+            f'<span class="card-arrow">Play now →</span></div></a>'
             for g in games
         )
         blocks.append(
