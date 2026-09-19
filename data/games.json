@@ -8,68 +8,36 @@
   },
   "games": [
     {
-      "slug": "block-puzzle-101",
-      "title": "Block Puzzle 101",
-      "title_en": "Block Puzzle 101",
+      "slug": "chubby-finn",
+      "title": "Chubby Finn",
+      "title_en": "Chubby Finn",
       "category": "puzzle",
-      "embed_url": "https://example.com/your-game-embed-url-1",
-      "keywords": ["block puzzle online", "free puzzle game", "brain teaser game"],
-      "summary": "Block Puzzle 101 is a free HTML5 brain teaser: drag blocks onto a 10x10 board and fill full rows or columns to clear them. Rounds last 3–5 minutes — perfect for commutes and short breaks.",
-      "description": "Play Block Puzzle 101 free online — the classic 10x10 block-clearing game. No downloads, no sign-ups; works on mobile and desktop.",
+      "embed_url": "https://html5.gamemonetize.co/5s2ajlkoc8i1l3u7sawaqoqgna70csybg/",
+      "keywords": ["chubby finn online", "sokoban puzzle game", "free puzzle game", "hypercasual puzzle"],
+      "summary": "Chubby Finn is a cute Sokoban-style puzzle: help a chubby little seal push every ball into its target spot across carefully designed grids. Plan each move ahead — balls can be pushed but never pulled.",
+      "description": "Play Chubby Finn free online — an adorable Sokoban puzzle game. Guide Finn the seal, push balls to the target, and solve every brain-teasing level. No download, no sign-up.",
       "sections": [
         {
-          "h2": "How do you play Block Puzzle 101?",
-          "body": "The game hands you blocks in random shapes, one at a time. Drag each one onto the 10x10 board; whenever a row or column is completely filled, it clears and scores points. The game ends when the board has no room for the next block. The core strategy is to keep space open for long I-shaped blocks — resist the urge to fill every corner too early."
+          "h2": "How do you play Chubby Finn?",
+          "body": "Chubby Finn is a grid-based puzzle where you steer a chubby seal around with the arrow buttons. Your goal is to push every ball onto its glowing target position. The catch: a ball can only be pushed, never pulled, so one careless shove can block a level forever. Before you start pushing, walk the path in your head — plan every turn so Finn never traps a ball or himself against the wall."
         },
         {
-          "h2": "Why play it in your browser?",
-          "body": "The web version needs no installation and takes up zero phone storage. On desktop it plays precisely with a mouse or trackpad, and on mobile you drag with your finger. Nothing to update, nothing to sign up for — just open the page and start a round."
+          "h2": "What makes it worth playing?",
+          "body": "Levels are designed as bite-sized brain teasers — short enough for a coffee break, tricky enough to make you rethink your first move. The art stays cute and clean, and it runs smoothly on both desktop and touch screens, so you can pick it up on any device without an install or a sign-up."
         }
       ],
       "faq": [
         {
-          "q": "Is Block Puzzle 101 free?",
-          "a": "Yes — completely free. The game is supported by ads, so you can play the full experience without paying a cent."
+          "q": "Is Chubby Finn free?",
+          "a": "Yes. The game is completely free to play in your browser, supported by non-intrusive ads."
         },
         {
-          "q": "Can I play it on my phone?",
-          "a": "Absolutely. The page adapts to any screen size, and you move the blocks with simple touch drags."
+          "q": "How do I control Finn?",
+          "a": "On desktop, use the on-screen arrow buttons or your keyboard's arrow keys. On mobile, tap the arrow buttons shown on the game board."
         },
         {
-          "q": "Does the game save my score?",
-          "a": "Your current score is kept for the round you're playing. Refreshing the page starts a new round — there's no account system to worry about."
-        }
-      ],
-      "related": [],
-      "date": "2026-09-18"
-    },
-    {
-      "slug": "retro-snake-classic",
-      "title": "Retro Snake Classic",
-      "title_en": "Retro Snake Classic",
-      "category": "classic",
-      "embed_url": "https://example.com/your-game-embed-url-2",
-      "keywords": ["snake game online", "retro snake", "classic arcade game"],
-      "summary": "Retro Snake Classic brings back the arcade favorite: steer your snake, eat the food, grow longer — hit a wall or yourself and it's game over. One second to learn, hard to put down.",
-      "description": "Play classic snake online free — authentic arcade feel with keyboard and touch controls. No download, just open and play.",
-      "sections": [
-        {
-          "h2": "What's new in this classic?",
-          "body": "Beyond the original mode, speed now ramps up as your snake grows, so late-game pacing gets noticeably faster. To chase a high score, deliberately leave room to maneuver early on — don't let your own tail trap you against the wall."
-        },
-        {
-          "h2": "How do keyboard and touch controls work?",
-          "body": "On desktop, use the arrow keys or WASD to steer. On mobile, swipe on the screen in the direction you want to go. Both control schemes respond instantly, so sharp turns are never a problem."
-        }
-      ],
-      "faq": [
-        {
-          "q": "What's the highest possible score in Snake?",
-          "a": "There's no fixed cap — it depends on how long you survive and how long your snake gets. Once the speed climbs, margin for error shrinks; most players finish somewhere between 200 and 500 points."
-        },
-        {
-          "q": "What if the game loads slowly?",
-          "a": "It's a lightweight HTML5 build — normally 1–2 seconds on a decent connection. If it ever seems stuck, just refresh the page and it will reload."
+          "q": "What if I push a ball the wrong way?",
+          "a": "Balls can't be pulled back, so if you trap one, simply restart the level. Each level is short, so a reset costs only a few seconds."
         }
       ],
       "related": [],
