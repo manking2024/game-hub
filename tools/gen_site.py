@@ -167,7 +167,7 @@ def render_game_page(game, site, all_games):
     rel_html = ""
     if rel:
         cards = "\n".join(
-            f'<a class="card" href="games/{g["slug"]}.html">'
+            f'<a class="card" href="../games/{g["slug"]}.html">'
             + (f'<img class="card-thumb" src="{esc(g["thumbnail"])}" alt="{esc(g["title"])}" loading="lazy">'
                if g.get("thumbnail") else "")
             + f'<div class="card-body">'
