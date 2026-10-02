@@ -33,6 +33,55 @@ def esc(value):
     return html.escape(str(value), quote=True)
 
 
+def render_body(text):
+    """Lightweight body renderer for section text.
+
+    Supports `- ` unordered lists and `|` pipe tables (first row = header,
+    a `---` separator row is skipped). Every other line stays a plain <p>.
+    Inline HTML inside the source is escaped, never executed.
+    """
+    raw = str(text).strip().splitlines()
+    out = []
+    i = 0
+    while i < len(raw):
+        line = raw[i].strip()
+        if not line:
+            i += 1
+            continue
+        # Unordered list block
+        if line.startswith("- "):
+            items = []
+            while i < len(raw) and raw[i].strip().startswith("- "):
+                items.append(esc(raw[i].strip()[2:]))
+                i += 1
+            out.append("<ul>" + "".join(f"<li>{it}</li>" for it in items) + "</ul>")
+            continue
+        # Pipe table block: at least 2 consecutive lines containing '|'
+        if "|" in line:
+            rows = []
+            while i < len(raw) and "|" in raw[i].strip():
+                rows.append([c.strip() for c in raw[i].strip().strip("|").split("|")])
+                i += 1
+            if len(rows) >= 2:
+                # Skip a separator row made only of dashes/colons
+                if all(set(r) <= set("-: ") for r in rows[1]):
+                    rows.pop(1)
+                if rows:
+                    thead = "".join(f"<th>{esc(c)}</th>" for c in rows[0])
+                    trs = "".join(
+                        "<tr>" + "".join(f"<td>{esc(c)}</td>" for c in r) + "</tr>"
+                        for r in rows[1:]
+                    )
+                    out.append(
+                        f'<table class="cmp-table"><thead><tr>{thead}</tr></thead>'
+                        f"<tbody>{trs}</tbody></table>"
+                    )
+                    continue
+        out.append(f"<p>{esc(line)}</p>")
+        i += 1
+    return "\n".join(out)
+
+
 def load():
     with open(DATA, "r", encoding="utf-8-sig") as f:
         return json.load(f)
@@ -98,7 +147,7 @@ def render_game_page(game, site, all_games):
     )
 
     sections = "\n".join(
-        f"<section class=\"content-block\">\n<h2>{esc(s['h2'])}</h2>\n<p>{esc(s['body'])}</p>\n</section>"
+        f'<section class="content-block">\n<h2>{esc(s["h2"])}</h2>\n{render_body(s["body"])}</section>'
         for s in game.get("sections", [])
     )
 

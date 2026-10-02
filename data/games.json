@@ -25,25 +25,53 @@
       "sections": [
         {
           "h2": "How do you play Chubby Finn?",
-          "body": "Chubby Finn is a grid-based puzzle where you steer a chubby seal around with the arrow buttons. Your goal is to push every ball onto its glowing target position. The catch: a ball can only be pushed, never pulled, so one careless shove can block a level forever. Before you start pushing, walk the path in your head — plan every turn so Finn never traps a ball or himself against the wall."
+          "body": "Chubby Finn is a grid-based puzzle. You steer Finn around the board with the on-screen arrow buttons or your keyboard's arrow keys. Your goal is to push every ball onto its glowing target spot. The catch is the same one that makes all Sokoban games tick: a ball can only be pushed, never pulled. One careless shove can wedge a ball into a corner where nothing can rescue it, so think before you push.\n\nOn mobile, the same arrow buttons appear on the board, so the game is fully playable on a phone or tablet. No install, no account, no sign-up."
         },
         {
-          "h2": "What makes it worth playing?",
-          "body": "Levels are designed as bite-sized brain teasers — short enough for a coffee break, tricky enough to make you rethink your first move. The art stays cute and clean, and it runs smoothly on both desktop and touch screens, so you can pick it up on any device without an install or a sign-up."
+          "h2": "How many levels does Chubby Finn have?",
+          "body": "The game runs through a series of hand-designed grids that grow tighter and trickier as you progress. Early levels teach one idea each; later ones stack several traps in the same small space. What matters more than the count: every level is short. A failed board costs only a few seconds to restart, so you learn by replaying, not by grinding. The exact level count depends on the current version — check inside the game."
+        },
+        {
+          "h2": "What makes Chubby Finn different from classic Sokoban?",
+          "body": "Classic Sokoban is pure box-to-goal planning: warehouse crates, grey grids, zero charm. Chubby Finn keeps the same push-and-plan rules but wraps them in a casual, friendly package:\n\n- Cute, clean art and a chubby seal hero instead of an anonymous crate-pusher\n- Bite-sized boards tuned for a coffee break, not a long session\n- Touch-friendly controls, so it plays as well on a phone as on a desktop\n\nIf you like the logic of classic Sokoban but want something you can pick up and drop in two minutes, Chubby Finn sits right between brain teaser and casual game."
+        },
+        {
+          "h2": "What should a beginner know before the first level?",
+          "body": "Five rules will get you through most boards:\n\n- Spot deadlocks before you push. A ball pushed into a corner, or against a wall with no way around it, can never be rescued.\n- Work backward. Picture the final push first — where does the last ball need to stand, and where must Finn stand to push it?\n- Never block your own standing space. A ball is useless if you can't get behind it.\n- Don't rush to move the nearest ball. The obvious first push is often the one that ends the run.\n- Restart early, not late. As soon as a proven deadlock appears, hit restart. A 10-second reset beats 5 minutes of pushing hopelessly."
+        },
+        {
+          "h2": "Can I play Chubby Finn on mobile? Will my progress save?",
+          "body": "Yes to both, in practice. The game runs in any modern browser on desktop, mobile and tablet, with touch controls on the board. Since there is no account, progress is stored locally in the browser — clear your browser data and it resets, but a normal close-and-reopen keeps your place."
+        },
+        {
+          "h2": "Is Chubby Finn suitable for kids?",
+          "body": "The content is logic and puzzles only: no violence, no gore, no chat, no external links inside the game. Based on its content, it is a reasonable pick for children roughly 6 and up, played with normal parental oversight. This is a content-based suggestion, not an official age rating."
         }
       ],
       "faq": [
         {
           "q": "Is Chubby Finn free?",
-          "a": "Yes. The game is completely free to play in your browser, supported by non-intrusive ads."
+          "a": "Yes. The game is completely free to play in your browser, supported by non-intrusive ads on the page. No purchase, no subscription, no paywall mid-level."
         },
         {
           "q": "How do I control Finn?",
-          "a": "On desktop, use the on-screen arrow buttons or your keyboard's arrow keys. On mobile, tap the arrow buttons shown on the game board."
+          "a": "On desktop, use the on-screen arrow buttons or your keyboard's arrow keys. On mobile, tap the arrow buttons shown on the game board. One seal, four directions — that is the whole control scheme."
         },
         {
           "q": "What if I push a ball the wrong way?",
-          "a": "Balls can't be pulled back, so if you trap one, simply restart the level. Each level is short, so a reset costs only a few seconds."
+          "a": "Balls can't be pulled back, so if you trap one in a corner, restart the level. Levels are short enough that a reset costs only a few seconds."
+        },
+        {
+          "q": "How many levels can I play?",
+          "a": "The game offers a series of hand-designed grids that get progressively trickier; the exact level count depends on the current version, so check inside the game."
+        },
+        {
+          "q": "Can I play Chubby Finn on my phone?",
+          "a": "Yes. The game runs in any modern mobile browser with touch-friendly arrow buttons on the board. No app store, no download, no account."
+        },
+        {
+          "q": "Is Chubby Finn okay for children?",
+          "a": "Yes, based on its content — it is a pure logic puzzle with no violence, no chat and no age-gated material. Parental supervision is always a good idea for younger players."
         }
       ],
       "related": [],
@@ -67,25 +95,57 @@
       "sections": [
         {
           "h2": "How do you control it?",
-          "body": "It is a true one-button game: hold the left mouse button or press and hold the Up Arrow to fly upward, release to dive down. Everything — timing jumps, clearing gaps, threading between gears — comes down to when you hold and when you let go. In 2-4 player modes, other players use Up, H and L keys."
+          "body": "It is a true one-button game. Hold the left mouse button or press and hold the Up Arrow to fly upward, release to dive down. Everything — timing a jump, clearing a gap, squeezing between spinning gears — comes down to when you hold and when you let go. That single input is the whole skill ceiling.\n\nIn 2-4 player modes, the extra players use the Up, H and L keys on the same keyboard, so a group can race without any controllers or accounts."
         },
         {
-          "h2": "What is new in the X-Ball mode?",
-          "body": "Beyond the original campaign, X-Ball adds interactive new levels, a dedicated challenge section and a completely rebuilt store, so runs feel fresh even if you already know the first game. Each level still boils down to dodging obstacles, traps and gears."
+          "h2": "What game modes does X-Ball have?",
+          "body": "The game ships several ways to play, and they train different skills:\n\n| Mode | What it is | Good for |\n|---|---|---|\n| Endless | One unbroken run, difficulty keeps climbing | Learning rhythm and feel |\n| Challenge | A curated set of hard, bite-sized levels | Edge control and precision |\n| Classic levels | The structured campaign with a goal to reach | Measuring progress |\n| Race (2-4 players) | Same-keyboard multiplayer races | Friendly competition |\n\nRecommended start order: Endless first to build the hold/release rhythm, then Challenge to sharpen precision, then Race for fun. The store sits in the middle — spend early on anything that helps you survive longer runs."
+        },
+        {
+          "h2": "How is X-Ball different from the original Geometry Vibes?",
+          "body": "The original campaign is the pure one-button obstacle run. X-Ball keeps that core and layers three additions on top: new interactive levels, a dedicated challenge section and a completely rebuilt store. If you already know the first game, the new levels and the store make X-Ball feel fresh instead of a re-skin. For a full feature comparison with the 3D edition, check the version you are playing."
+        },
+        {
+          "h2": "What should a new player do in the first 10 minutes?",
+          "body": "- Play Endless for three runs. Feel the hold/release rhythm without worrying about failing.\n- Watch the gears, not the ball. Obstacles come at you in predictable lanes; your eyes should track the gap you are flying into.\n- Try one Challenge level. It forces precise edge control and teaches you how tight the hitbox really is.\n- Open the store and read prices. Understand what currency is for before you spend a single coin.\n- Race a friend once. Multiplayer is where the game gets loud — and where the controls prove themselves."
+        },
+        {
+          "h2": "Can I play with friends on one device?",
+          "body": "Yes. X-Ball supports 1-4 player modes on the same keyboard. Player 1 uses the mouse or Up Arrow; players 2-4 use Up, H and L. No controllers, no accounts, no network setup."
+        },
+        {
+          "h2": "Do I have to pay for anything?",
+          "body": "No. The game is free to play in the browser, and the store is built around in-game currency earned by playing, not real money. The current unlock list is best checked inside the game."
+        },
+        {
+          "h2": "Can I play on mobile?",
+          "body": "It runs in a mobile browser, but desktop with a mouse or keyboard is the reference experience; touch support depends on the device, so test on your phone before you judge it."
         }
       ],
       "faq": [
         {
           "q": "Is Geometry Vibes X Ball free?",
-          "a": "Yes, it is free to play in your browser with no install."
+          "a": "Yes. It is free to play in your browser with no install, no account and no paywall. Page ads support the site, not the game."
         },
         {
           "q": "Can I play it with friends?",
-          "a": "Yes — it supports 1 to 4 player modes on the same keyboard. Other players use the Up, H and L keys."
+          "a": "Yes — 1 to 4 player modes run on the same keyboard. Player 1 uses the mouse or Up Arrow, others use Up, H and L keys."
         },
         {
-          "q": "Does progress save?",
-          "a": "The game keeps your progress locally in the browser, so you can leave and come back later."
+          "q": "Does my progress save?",
+          "a": "The game keeps your progress locally in the browser, so closing the tab and coming back later keeps your place. Clearing browser data resets it."
+        },
+        {
+          "q": "Which mode should a beginner start with?",
+          "a": "Endless. It builds the hold/release rhythm with no pressure, then move to Challenge for precision and Race for multiplayer fun."
+        },
+        {
+          "q": "Are the store items real-money purchases?",
+          "a": "No — the store uses in-game currency earned by playing, and the game itself is free. Check inside the game for the current unlock list."
+        },
+        {
+          "q": "Can I play on my phone?",
+          "a": "It runs in a mobile browser, but desktop with mouse or keyboard is the reference experience; touch support depends on the device."
         }
       ],
       "related": [],

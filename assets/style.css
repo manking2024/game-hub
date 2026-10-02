@@ -202,3 +202,11 @@ a:hover { text-decoration: none; }
   .game-frame { padding-top: 100%; } /* closer to square on phones */
   .content-block { padding: 18px; }
 }
+
+/* ---------- GEO content: comparison tables ---------- */
+.cmp-table { width: 100%; border-collapse: collapse; margin: 12px 0 16px; font-size: 14px; }
+.cmp-table th, .cmp-table td { text-align: left; padding: 10px 12px; border: 1px solid #e2e6ee; vertical-align: top; }
+.cmp-table thead th { background: #f1f5ff; font-weight: 700; color: #1d2b53; }
+.cmp-table tbody tr:nth-child(even) { background: #fafbfd; }
+.content-block ul { margin: 10px 0 14px; padding-left: 22px; }
+.content-block li { margin: 5px 0; line-height: 1.6; }
