@@ -240,6 +240,37 @@ def render_index(site, all_games):
         for cat, games in categories.items()
     )
 
+    # ---- Editor's Picks block ----
+    by_slug = {g["slug"]: g for g in all_games}
+    picks_html = ""
+    picks = site.get("picks", [])
+    if picks:
+        cards = []
+        for p in picks:
+            g = by_slug.get(p["slug"])
+            if not g:
+                continue
+            mins = p.get("mins", "")
+            cards.append(
+                f'<a class="card" href="games/{esc(g["slug"])}.html">'
+                + (f'<img class="card-thumb" src="{esc(g["thumbnail"])}" alt="{esc(g["title"])}" loading="lazy">'
+                   if g.get("thumbnail") else "")
+                + f'<div class="card-body">'
+                f'<span class="card-tag tag-{esc(g["category"])}">{esc(g["category"])}</span>'
+                f'<strong>{esc(g["title"])}</strong>'
+                f'<em>{esc(p["reason"])}</em>'
+                + (f'<span class="picks-mins">⏱ {esc(mins)}</span>' if mins else "")
+                + f'<span class="card-arrow">Play now →</span></div></a>'
+            )
+        if cards:
+            picks_html = (
+                '<section class="picks">\n'
+                "<h2>Editor's Picks: 5 Games to Play Right Now</h2>\n"
+                '<p class="picks-sub">Short on time? Start here — every pick is free, runs instantly in your browser, '
+                'and is worth a quick session.</p>\n'
+                f'<div class="card-grid">{"".join(cards)}</div>\n</section>'
+            )
+
     blocks = []
     for cat, games in categories.items():
         cards = "\n".join(
@@ -259,6 +290,34 @@ def render_index(site, all_games):
             f'<div class="card-grid">{cards}</div>\n</section>'
         )
 
+    # ---- Site FAQ block + FAQPage schema ----
+    faq_html = ""
+    faq_schema = ""
+    site_faqs = site.get("faq", [])
+    if site_faqs:
+        items = "\n".join(
+            f'<li class="faq-item"><h3>{esc(f["q"])}</h3><p>{esc(f["a"])}</p></li>'
+            for f in site_faqs
+        )
+        faq_html = (
+            '<section class="picks">\n'
+            "<h2>Frequently Asked Questions</h2>\n"
+            f'<ul class="faq-list">{items}</ul>\n</section>'
+        )
+        faq_schema = (
+            '<script type="application/ld+json">'
+            + json.dumps({
+                "@context": "https://schema.org",
+                "@type": "FAQPage",
+                "mainEntity": [
+                    {"@type": "Question", "name": f["q"],
+                     "acceptedAnswer": {"@type": "Answer", "text": f["a"]}}
+                    for f in site_faqs
+                ],
+            }, ensure_ascii=False)
+            + "</script>"
+        )
+
     return f"""<!DOCTYPE html>
 <html lang="en">
 <head>
@@ -269,6 +328,7 @@ def render_index(site, all_games):
 <meta name="keywords" content="{esc(site['keywords'])}">
 <link rel="canonical" href="{esc(site['domain'])}/">
 <link rel="stylesheet" href="assets/style.css">
+{faq_schema}
 </head>
 <body>
 <header class="site-header">
@@ -281,7 +341,9 @@ def render_index(site, all_games):
 </section>
 <main class="wrap">
   <p class="lead">{len(all_games)} games and counting — new titles added regularly.</p>
+{picks_html}
 {''.join(blocks)}
+{faq_html}
 </main>
 <footer class="site-footer">
   <p>© {datetime.date.today().year} {esc(site['name'])} · Free online games for fun · Game content © their respective platforms</p>

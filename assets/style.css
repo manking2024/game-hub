@@ -210,3 +210,4 @@ a:hover { text-decoration: none; }
 .cmp-table tbody tr:nth-child(even) { background: #fafbfd; }
 .content-block ul { margin: 10px 0 14px; padding-left: 22px; }
 .content-block li { margin: 5px 0; line-height: 1.6; }
+/* GEO home: picks & faq */ .picks { margin: 26px 0; } .picks h2 { font-size: 21px; color: #1d2b53; } .picks-sub { color: #64748b; font-size: 14px; margin: 6px 0 16px; } .picks-mins { display: inline-block; margin-top: 6px; font-size: 12px; font-weight: 700; color: #2563eb; background: #eff6ff; border-radius: 999px; padding: 3px 10px; } .faq-list { list-style: none; padding: 0; margin: 0; } .faq-item { margin: 14px 0; padding: 14px 16px; background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 12px; } .faq-item h3 { margin: 0 0 6px; font-size: 15px; color: #1d2b53; } .faq-item p { margin: 0; font-size: 14px; color: #334155; line-height: 1.6; }
