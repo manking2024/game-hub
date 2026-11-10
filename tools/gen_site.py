@@ -354,11 +354,23 @@ def render_index(site, all_games):
 
 
 def render_sitemap(site, all_games, today):
-    urls = [f"{site['domain']}/"]
-    urls += [f"{site['domain']}/games/{g['slug']}.html" for g in all_games]
+    """lastmod must reflect the real modification date of each page.
+
+    Stamping `today` on every URL makes Google treat the whole site as changed
+    on every build, which dilutes recrawl budget and weakens the signal for the
+    handful of pages that actually changed. Each game carries its own `date`
+    (bumped only when its content is edited); the homepage uses the newest one.
+    """
+    entries = []
+    home_lastmod = max([g.get("date", today) for g in all_games] + [today])
+    entries.append((f"{site['domain']}/", home_lastmod, "1.0"))
+    entries += [
+        (f"{site['domain']}/games/{g['slug']}.html", g.get("date", today), "0.8")
+        for g in all_games
+    ]
     items = "\n".join(
-        f"  <url><loc>{u}</loc><lastmod>{today}</lastmod><changefreq>daily</changefreq><priority>0.8</priority></url>"
-        for u in urls
+        f"  <url><loc>{u}</loc><lastmod>{d}</lastmod><changefreq>weekly</changefreq><priority>{p}</priority></url>"
+        for u, d, p in entries
     )
     return f"""<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
