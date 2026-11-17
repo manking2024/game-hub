@@ -362,7 +362,11 @@ def render_sitemap(site, all_games, today):
     (bumped only when its content is edited); the homepage uses the newest one.
     """
     entries = []
-    home_lastmod = max([g.get("date", today) for g in all_games] + [today])
+    # The homepage must carry its own date: it only really changes when the card
+    # list changes (games added/removed, names or picks edited). Folding a game's
+    # date or `today` in here would restamp the homepage on every build and
+    # reintroduce the "whole site changed" signal we are avoiding.
+    home_lastmod = site.get("date") or max(g.get("date", today) for g in all_games)
     entries.append((f"{site['domain']}/", home_lastmod, "1.0"))
     entries += [
         (f"{site['domain']}/games/{g['slug']}.html", g.get("date", today), "0.8")
